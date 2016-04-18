@@ -1,0 +1,92 @@
+$def with (hits, content_list, readUntilHere, data, ignore_words, unknown_search_words, form, next_button_form)
+<html>
+<head>
+<meta rel="author" href="http://Crunchify.com" content="">
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function () {
+		jQuery(".a").click(function () {
+			jQuery(".1").slideToggle("slow");
+		});
+	});
+	jQuery(document).ready(function () {
+		jQuery(".b").click(function () {
+			jQuery(".2").slideToggle("slow");
+		});
+	});
+	jQuery(document).ready(function () {
+		jQuery(".c").click(function () {
+			jQuery(".3").slideToggle("slow");
+		});
+	});
+	jQuery(document).ready(function () {
+		jQuery(".d").click(function () {
+			jQuery(".4").slideToggle("slow");
+		});
+	});
+	jQuery(document).ready(function () {
+		jQuery(".e").click(function () {
+			jQuery(".5").slideToggle("slow");
+		});
+	});
+	jQuery(document).ready(function () {
+		jQuery(".f").click(function () {
+			jQuery(".6").slideToggle("slow");
+		});
+	});
+	jQuery(document).ready(function () {
+		jQuery(".g").click(function () {
+			jQuery(".7").slideToggle("slow");
+		});
+	});
+	jQuery(document).ready(function () {
+		jQuery(".h").click(function () {
+			jQuery(".8").slideToggle("slow");
+		});
+	});
+	jQuery(document).ready(function () {
+		jQuery(".i").click(function () {
+			jQuery(".9").slideToggle("slow");
+		});
+	});
+	jQuery(document).ready(function () {
+		jQuery(".j").click(function () {
+			jQuery(".10").slideToggle("slow");
+		});
+	});
+</script>
+
+</head>
+
+<body bgcolor="#5f9ea0">
+<form action="results" name=query method="get">
+	$:form.render()<input type="submit" value="Search" />
+</form><br>
+
+	<h2><b>Results from $(readUntilHere-10) to $readUntilHere</b><br></h2>
+	<p>The number of hits: $hits</p>
+	<p>Ignoring term: $ignore_words </p>
+	<p>Unknown search term: $unknown_search_words </p>
+	<br>
+	<p><b>Click on title to show/hide text information</b><p>
+	$ index = -1
+	$ p_class_name = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"]
+	$ div_class_name = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+	$for content in content_list[readUntilHere-10:readUntilHere]:
+		$ index = index + 1
+		$for cos, id in content.iteritems():
+			<p class=$p_class_name[index]><b>Title: $:data[id]['title']</b></p>
+			<p><b>Abstract</b>: $:data[id]['text'][:150] ...</p>
+			<div class=$div_class_name[index]><b>Full text:</b> $:data[id]['text']</div>
+			$ link = "/similars?doc_id=" + id
+			<a href=$link>More like this</a>
+			<br><br><br>
+
+	<form action="results" method="post">
+	 $:next_button_form.render()
+	</form>
+
+
+</body>
+</html>

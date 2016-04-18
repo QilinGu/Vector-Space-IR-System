@@ -1,0 +1,11 @@
+$def with (content_list, data)
+<html>
+<body bgcolor="#5f9ea0">
+<h2><b>Similar Movies</b></h2>
+$for content in content_list:
+    <p><b>Title:</b>$:data[content[0]]['title']</p>
+    <p><b>Abstract</b>: $:data[content[0]]['text'][:260] ...</p>
+    <br><br>
+
+</body>
+</html>
